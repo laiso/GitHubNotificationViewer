@@ -109,7 +109,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="Zdf-7t-Un8">
-                        <barButtonItem key="rightBarButtonItem" title="SignIn" id="qib-qE-4YU"/>
+                        <barButtonItem key="rightBarButtonItem" title="SignIn" id="qib-qE-4YU">
+                            <connections>
+                                <action selector="onSignInButton" destination="7bK-jq-Zjz" id="Ri8-zs-ys7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
