@@ -6,22 +6,16 @@
 //
 
 import UIKit
+import OAuthSwift
 
 class NotificationItem {
     var title: String = "";
 }
 
-struct GitHub {
-    func loadNotifications(completionHandler: ((NSError?, [NotificationItem]?) -> Void)) {
-        print("TODO: Load Notifications")
-        completionHandler(nil, [NotificationItem()])
-    }
-}
-
 class MasterViewController: UITableViewController {
     var detailViewController: DetailViewController? = nil
     var items: [NotificationItem] = [NotificationItem]()
-
+    var oauthswift: OAuth2Swift! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +29,15 @@ class MasterViewController: UITableViewController {
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if (oauthswift == nil){
+            onSignInButton()
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
@@ -80,17 +82,50 @@ class MasterViewController: UITableViewController {
         return cell
     }
     
-    // MARK: - ViewController
+    // MARK: -
     
     func onRefresh() {
-        let api = GitHub()
-        api.loadNotifications { (error, items) -> Void in
-            if let ns = items {
-                self.items = ns
-            }
-            
-            self.refreshControl?.endRefreshing()
+        if let api = oauthswift {
+            api.client.get("https://api.github.com/notifications",
+                success: { (data, response) -> Void in
+                    print(data)
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.refreshControl?.endRefreshing()
+                    })
+                },
+                failure: { error in
+                    print(error.localizedDescription)
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.refreshControl?.endRefreshing()
+                    })
+            })
         }
+    }
+    
+    @IBAction
+    func onSignInButton() {
+        oauthswift = OAuth2Swift(
+            consumerKey:    "139e6bcdad03cc9cf86f",
+            consumerSecret: "09145cc9459ed062604b4f51ad30f5286a123477",
+            authorizeUrl:   "https://github.com/login/oauth/authorize",
+            accessTokenUrl: "https://github.com/login/oauth/access_token",
+            responseType:   "code"
+        )
+        oauthswift.authorize_url_handler = SafariURLHandler(viewController: self)
+        
+        let state: String = generateStateWithLength(20) as String
+        oauthswift.authorizeWithCallbackURL(
+            NSURL(string: "oauth-swift://oauth-callback/github")!,
+            scope: "user,repo,notifications", state: state,
+            success: { credential, response, parameters in
+                self.onRefresh()
+            },
+            failure: { error in
+                print(error.localizedDescription)
+            }
+        )
     }
     
 }
