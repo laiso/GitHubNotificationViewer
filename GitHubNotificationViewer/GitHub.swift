@@ -3,7 +3,8 @@ import OAuthSwift
 import SwiftyJSON
 
 class NotificationItem {
-    var title, apiURL: String?
+    var title, apiURL, repository, updatedAt : String?
+    var imageURL: NSURL?
     var URL: NSURL? {
         get {
             if let url = apiURL?.stringByReplacingOccurrencesOfString("https://api.github.com/repos", withString: "https://github.com") {
@@ -18,6 +19,12 @@ class NotificationItem {
     init(item: JSON){
         self.title = item["subject"]["title"].string
         self.apiURL = item["subject"]["url"].string
+        self.repository = item["repository"]["url"].string?.stringByReplacingOccurrencesOfString("https://api.github.com/repos/", withString: "")
+        self.updatedAt = item["updated_at"].string
+        
+        if let url = item["repository"]["owner"]["avatar_url"].string {
+            self.imageURL = NSURL(string: url)
+        }
     }
 }
 
@@ -47,6 +54,7 @@ class GitHub {
     
     func loadNotifications(completion: (NSError?, [NotificationItem]?) -> Void){
         oauthswift.client.get("https://api.github.com/notifications",
+            parameters: ["all": true],
             success: { (data, response) -> Void in
                 let json = JSON(data: data)
                 var items = [NotificationItem]()

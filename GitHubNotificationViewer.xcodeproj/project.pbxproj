@@ -10,6 +10,7 @@
 		077759091C57AF2A00F84B79 /* GitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077759081C57AF2A00F84B79 /* GitHub.swift */; };
 		077759131C57C96C00F84B79 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0777590F1C57C67700F84B79 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		077759141C57C96C00F84B79 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 077759101C57C67700F84B79 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		077759181C59163100F84B79 /* Haneke.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 077759171C59163100F84B79 /* Haneke.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		079767AB1C565B43003B4281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079767AA1C565B43003B4281 /* AppDelegate.swift */; };
 		079767AD1C565B43003B4281 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079767AC1C565B43003B4281 /* MasterViewController.swift */; };
 		079767B21C565B43003B4281 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 079767B01C565B43003B4281 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 			files = (
 				077759131C57C96C00F84B79 /* OAuthSwift.framework in Embed Frameworks */,
 				077759141C57C96C00F84B79 /* SwiftyJSON.framework in Embed Frameworks */,
+				077759181C59163100F84B79 /* Haneke.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,6 +39,7 @@
 		0777590C1C57B58A00F84B79 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		0777590F1C57C67700F84B79 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		077759101C57C67700F84B79 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		077759171C59163100F84B79 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = Carthage/Build/iOS/Haneke.framework; sourceTree = "<group>"; };
 		079767A71C565B43003B4281 /* GitHubNotificationViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubNotificationViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		079767AA1C565B43003B4281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		079767AC1C565B43003B4281 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				079767A91C565B43003B4281 /* GitHubNotificationViewer */,
+				077759171C59163100F84B79 /* Haneke.framework */,
 				0777590F1C57C67700F84B79 /* OAuthSwift.framework */,
 				077759101C57C67700F84B79 /* SwiftyJSON.framework */,
 				0777590C1C57B58A00F84B79 /* SafariServices.framework */,
