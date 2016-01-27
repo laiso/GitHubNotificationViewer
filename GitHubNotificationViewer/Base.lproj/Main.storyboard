@@ -3,12 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
                 <navigationController title="Master" id="RMx-3f-FxP" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Pmd-2v-anx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -24,28 +26,73 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="GitHubNotificationViewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="DefaultCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" id="r7i-6Z-zg0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DefaultCell" rowHeight="88" id="WCw-Qf-5nD" customClass="NotificationCell" customModule="GitHubNotificationViewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="414" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Arm-wq-HPj">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anglar_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Tr8-iW-2ig">
+                                            <rect key="frame" x="4" y="4" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="04d-BZ-RF6"/>
+                                                <constraint firstAttribute="height" constant="80" id="4Ea-0h-EnR"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="angular/angular.js" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wnb-5C-TiM">
+                                            <rect key="frame" x="94" y="13" width="300" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="FSg-rg-rPD"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016-01-27T02:45:24" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTr-al-GZl">
+                                            <rect key="frame" x="196" y="61" width="200" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="200" id="qDw-ts-E94"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="some locales like ko-kr, ja-jp don't uses fractions in currency but angular does" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnj-2g-Ny5">
+                                            <rect key="frame" x="94" y="33" width="302" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="j6i-rF-SHF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wnb-5C-TiM" firstAttribute="leading" secondItem="Tr8-iW-2ig" secondAttribute="trailing" constant="10" id="5T7-QY-xK6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jTr-al-GZl" secondAttribute="trailing" constant="10" id="5vA-Kt-Hec"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wnj-2g-Ny5" secondAttribute="trailing" constant="10" id="8mB-0V-kPe"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wnj-2g-Ny5" secondAttribute="trailing" constant="10" id="9XX-21-NIt"/>
+                                        <constraint firstItem="wnj-2g-Ny5" firstAttribute="leading" secondItem="Tr8-iW-2ig" secondAttribute="trailing" constant="10" id="TpI-zc-Fo6"/>
+                                        <constraint firstItem="wnj-2g-Ny5" firstAttribute="top" secondItem="Wnb-5C-TiM" secondAttribute="bottom" constant="-1" id="Xko-za-Yau"/>
+                                        <constraint firstItem="Wnb-5C-TiM" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="5" id="djy-qA-Yv8"/>
+                                        <constraint firstItem="Tr8-iW-2ig" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="topMargin" constant="-4" id="mcT-Xe-Bgj"/>
+                                        <constraint firstItem="Tr8-iW-2ig" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" constant="-4" id="nNJ-tA-JRC"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jTr-al-GZl" secondAttribute="bottom" id="psd-lX-lWr"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="iconView" destination="Tr8-iW-2ig" id="SPA-Zo-Gef"/>
+                                    <outlet property="repositoryLabel" destination="Wnb-5C-TiM" id="hdN-MW-pQd"/>
+                                    <outlet property="titleLabel" destination="wnj-2g-Ny5" id="PVB-AU-EB5"/>
+                                    <outlet property="updatedAtLabel" destination="jTr-al-GZl" id="dCp-As-3Sk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -61,10 +108,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="anglar_icon" width="100" height="100"/>
+    </resources>
 </document>

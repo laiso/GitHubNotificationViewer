@@ -7,6 +7,14 @@
 
 import UIKit
 import SafariServices
+import Haneke
+
+class NotificationCell: UITableViewCell {
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var repositoryLabel: UILabel!
+    @IBOutlet weak var updatedAtLabel: UILabel!
+}
 
 class MasterViewController: UITableViewController {
     var items: [NotificationItem] = [NotificationItem]()
@@ -31,10 +39,18 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("DefaultCell", forIndexPath: indexPath) as! NotificationCell
 
         let object = items[indexPath.row]
-        cell.textLabel!.text = object.title
+        
+        if let url = object.imageURL {
+            cell.iconView.hnk_setImageFromURL(url)
+        }
+        
+        cell.repositoryLabel.text = object.repository
+        cell.titleLabel.text = object.title
+        cell.updatedAtLabel.text = object.updatedAt
+        
         return cell
     }
     
