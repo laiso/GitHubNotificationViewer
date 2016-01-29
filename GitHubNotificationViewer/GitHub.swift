@@ -28,7 +28,7 @@ class NotificationItem {
     }
 }
 
-class GitHub {
+struct GitHub {
     private let oauthswift = OAuth2Swift(
         consumerKey:    "139e6bcdad03cc9cf86f",
         consumerSecret: "09145cc9459ed062604b4f51ad30f5286a123477",
