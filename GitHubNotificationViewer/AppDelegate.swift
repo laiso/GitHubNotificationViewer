@@ -16,13 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         return true
     }
-    
+
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        if (url.host == "oauth-callback") {
+        if url.host == "oauth-callback" {
             OAuthSwift.handleOpenURL(url)
         }
+
         return true
     }
 
 }
-
