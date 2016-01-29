@@ -27,7 +27,7 @@ class MasterViewController: UITableViewController {
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
     }
-    
+
     // MARK: - Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -39,52 +39,52 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("DefaultCell", forIndexPath: indexPath) as! NotificationCell
+        guard let cell = tableView.dequeueReusableCellWithIdentifier("DefaultCell", forIndexPath: indexPath) as? NotificationCell else {
+            return UITableViewCell()
+        }
 
         let object = items[indexPath.row]
-        
+
         if let url = object.imageURL {
             cell.iconView.hnk_setImageFromURL(url)
         }
-        
+
         cell.repositoryLabel.text = object.repository
         cell.titleLabel.text = object.title
         cell.updatedAtLabel.text = object.updatedAt
-        
+
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let
             indexPath = self.tableView.indexPathForSelectedRow,
-            url = items[indexPath.row].URL
-        {
+            url = items[indexPath.row].URL {
             let safari = SFSafariViewController(URL: url)
             self.presentViewController(safari, animated: true, completion: nil)
         }
     }
-    
+
     // MARK: -
-    
+
     func onRefresh() {
         github.loadNotifications { (error, notifications) -> Void in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if let items = notifications {
                     self.items = items
                 }
-                
+
                 self.refreshControl?.endRefreshing()
                 self.tableView.reloadData()
             })
         }
     }
-    
+
     @IBAction
     func onSignInButton() {
         github.authorizeWithViewController(self) { () -> Void in
             self.onRefresh()
         }
     }
-    
-}
 
+}
