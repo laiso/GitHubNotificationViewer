@@ -38,7 +38,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anglar_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Tr8-iW-2ig">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tr8-iW-2ig">
                                             <rect key="frame" x="4" y="4" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="04d-BZ-RF6"/>
@@ -102,7 +102,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="Zdf-7t-Un8">
-                        <barButtonItem key="rightBarButtonItem" title="SignIn" id="qib-qE-4YU">
+                        <barButtonItem key="rightBarButtonItem" title="Sign In" id="qib-qE-4YU">
                             <connections>
                                 <action selector="onSignInButton" destination="7bK-jq-Zjz" id="Ri8-zs-ys7"/>
                             </connections>
@@ -115,7 +115,4 @@
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="anglar_icon" width="100" height="100"/>
-    </resources>
 </document>
